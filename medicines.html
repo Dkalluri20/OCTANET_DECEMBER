@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medicines Delivery</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .header, .footer {
+      background-color: #555;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .medicine-container {
+      padding: 20px;
+      max-width: 1000px;
+      margin: 30px auto;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .medicine-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .medicine-item {
+      width: 45%;
+      background-color: #ADD8E6; /* Light Blue color */
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .medicine-item span {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .dropdown-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dropdown {
+      width: 80px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    .cart {
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+
+    .cart ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .cart ul li {
+      padding: 5px 0;
+    }
+
+    .total {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    button {
+      background-color: #555;
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 12px 20px;
+      margin-top: 20px;
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    .footer {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Medicines Delivery</h1>
+  </header>
+
+  <div class="medicine-container">
+    <h3>Select Medicines</h3>
+    <div id="medicineList" class="medicine-row">
+      <!-- List of Medicines with Quantity Dropdown -->
+      <div class="medicine-item">
+        <span>Paracetamol - ₹100</span>
+        <span>For relieving fever and pain.</span>
+        <div class="dropdown-container">
+          <label for="quantity">Quantity:</label>
+          <select class="dropdown" onchange="updateCart()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </div>
+      <div class="medicine-item">
+        <span>Ibuprofen - ₹120</span>
+        <span>Used for reducing inflammation and pain.</span>
+        <div class="dropdown-container">
+          <label for="quantity">Quantity:</label>
+          <select class="dropdown" onchange="updateCart()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </div>
+      <div class="medicine-item">
+        <span>Pain Relief Spray - ₹150</span>
+        <span>Topical spray for quick pain relief.</span>
+        <div class="dropdown-container">
+          <label for="quantity">Quantity:</label>
+          <select class="dropdown" onchange="updateCart()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </div>
+      <div class="medicine-item">
+        <span>Cough Syrup - ₹80</span>
+        <span>Effective for treating cough and throat irritation.</span>
+        <div class="dropdown-container">
+          <label for="quantity">Quantity:</label>
+          <select class="dropdown" onchange="updateCart()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </div>
+      <div class="medicine-item">
+        <span>Antihistamine - ₹50</span>
+        <span>Helps relieve allergy symptoms like runny nose and sneezing.</span>
+        <div class="dropdown-container">
+          <label for="quantity">Quantity:</label>
+          <select class="dropdown" onchange="updateCart()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </div>
+      <div class="medicine-item">
+        <span>Amoxicillin - ₹180</span>
+        <span>Used for treating bacterial infections.</span>
+        <div class="dropdown-container">
+          <label for="quantity">Quantity:</label>
+          <select class="dropdown" onchange="updateCart()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </div>
+      <div class="medicine-item">
+        <span>Vitamin C - ₹70</span>
+        <span>Boosts immunity and helps in the recovery process.</span>
+        <div class="dropdown-container">
+          <label for="quantity">Quantity:</label>
+          <select class="dropdown" onchange="updateCart()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </div>
+      <div class="medicine-item">
+        <span>Antacids - ₹60</span>
+        <span>Relieves heartburn and indigestion.</span>
+        <div class="dropdown-container">
+          <label for="quantity">Quantity:</label>
+          <select class="dropdown" onchange="updateCart()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </div>
+      <div class="medicine-item">
+        <span>Hydrocortisone Cream - ₹140</span>
+        <span>Used for treating skin irritation and inflammation.</span>
+        <div class="dropdown-container">
+          <label for="quantity">Quantity:</label>
+          <select class="dropdown" onchange="updateCart()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </div>
+      <div class="medicine-item">
+        <span>Saline Solution - ₹50</span>
+        <span>Used for cleaning wounds and nasal irrigation.</span>
+        <div class="dropdown-container">
+          <label for="quantity">Quantity:</label>
+          <select class="dropdown" onchange="updateCart()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart">
+      <h4>Your Cart:</h4>
+      <ul id="cartItems"></ul>
+      <div class="total" id="totalAmount">Total: ₹0</div>
+    </div>
+
+    <button onclick="completeMedicineOrder()">Complete Order</button>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; EaseHealth</p>
+  </footer>
+
+  <script>
+    const medicines = [
+      { name: 'Paracetamol', price: 100 },
+      { name: 'Ibuprofen', price: 120 },
+      { name: 'Pain Relief Spray', price: 150 },
+      { name: 'Cough Syrup', price: 80 },
+      { name: 'Antihistamine', price: 50 },
+      { name: 'Amoxicillin', price: 180 },
+      { name: 'Vitamin C', price: 70 },
+      { name: 'Antacids', price: 60 },
+      { name: 'Hydrocortisone Cream', price: 140 },
+      { name: 'Saline Solution', price: 50 }
+    ];
+
+    function updateCart() {
+      const cartItems = [];
+      let totalAmount = 0;
+      const cartList = document.getElementById('cartItems');
+      cartList.innerHTML = '';
+
+      document.querySelectorAll('.dropdown').forEach((dropdown, index) => {
+        const quantity = parseInt(dropdown.value);
+        const medicine = medicines[index];
+        const itemTotal = medicine.price * quantity;
+        totalAmount += itemTotal;
+
+        if (quantity > 0) {
+          cartItems.push(`${medicine.name} x ${quantity} - ₹${itemTotal}`);
+        }
+      });
+
+      cartItems.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        cartList.appendChild(li);
+      });
+
+      document.getElementById('totalAmount').textContent = `Total: ₹${totalAmount}`;
+    }
+
+    function completeMedicineOrder() {
+      alert('Medicines Ordered!');
+    }
+  </script>
+</body>
+</html>

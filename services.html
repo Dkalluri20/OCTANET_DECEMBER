@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to EaseHealth</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #f4f8fc, #ffffff);
+      color: #333;
+    }
+
+    .header {
+      background-image: url('bacground.jpg'); /* Add your background image here */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4); /* Optional: Adds a dark overlay for better text visibility */
+      z-index: -1;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 2.8em;
+      font-weight: bold;
+    }
+
+    .quote {
+      font-size: 1.4em;
+      font-style: italic;
+      margin-top: 15px;
+      margin-bottom: 30px;
+      color: #d9ecf8;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .services {
+      display: flex;
+      justify-content: space-evenly;
+      margin: -60px auto 40px; /* Negative margin moves widgets up to overlap the header */
+      max-width: 1200px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card {
+      background: linear-gradient(to bottom, #e0f7fa, #C0C0C0); /* Gradient of pale blue and white */
+      border-radius: 12px;
+      padding: 20px;
+      width: 260px; /* Increased size slightly */
+      margin: 20px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      font-size: 1.2em;
+      margin-top: 15px;
+      color: #0052cc;
+    }
+
+    .card p {
+      color: #555;
+      margin-top: 10px;
+      font-size: 0.95em;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .footer {
+      background-color: #555;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+      font-size: 1em;
+    }
+
+    .footer p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Welcome to EaseHealth</h1>
+    <p class="quote">"Your health, our priority"</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="wearables.html">Wearables</a>
+      <a href="about.html">About Us</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="services-list" class="services">
+      <!-- Doctor Appointment Widget -->
+      <div class="card" onclick="window.location.href='doctors.html'">
+        <img src="service.jpg" alt="Doctor" />
+        <h3>Doctor Appointment Booking</h3>
+        <p>Compare healthcare providers and book appointments easily.</p>
+      </div>
+
+      <!-- Caretakers and Maids Widget -->
+      <div class="card" onclick="window.location.href='caretaker.html'">
+        <img src="caretaker.jpg" alt="Maid" />
+        <h3>Caretakers & Maids</h3>
+        <p>Personalized care services tailored to patient needs.</p>
+      </div>
+
+      <!-- Medicines Delivery Widget -->
+      <div class="card" onclick="window.location.href='medicines.html'">
+        <img src="medicine.jpg" alt="Medicine Delivery" />
+        <h3>Medicines Delivery</h3>
+        <p>Subscription for timely delivery of medicines.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy;1st street , JP Nagar , Bangalore</p>
+  </footer>
+</body>
+</html>
